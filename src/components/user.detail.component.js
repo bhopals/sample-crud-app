@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {userFetchById, editUser} from '../actions/user.action'
+import {userFetchById, editUser, resetUserById} from '../actions/user.action'
 import { Redirect } from 'react-router';
 
 class UserDetailComponent extends React.Component {
@@ -11,6 +11,7 @@ class UserDetailComponent extends React.Component {
         this.user = {};
         this.state = {};
         this.saveData = this.saveData.bind(this);
+        this.onResetUserById = this.onResetUserById.bind(this); 
         console.log("USERL>>",this.user);
         
     }
@@ -18,6 +19,10 @@ class UserDetailComponent extends React.Component {
     componentWillMount() {
         this.props.onUserFetchById(this.props.match.params.userId);
 
+    }
+
+    onResetUserById() {
+        this.props.onResetUserById();
     }
 
     handleChange = (event, value) =>{ 
@@ -29,6 +34,7 @@ class UserDetailComponent extends React.Component {
     saveData() {
        console.log(this.props.user);
        this.props.saveData(this.props.user);
+       this.onResetUserById();
        this.setState({redirect: true});
     }
       
@@ -49,7 +55,9 @@ class UserDetailComponent extends React.Component {
             <h4 className="left">User Details Component</h4>
             <div className="sub-pages">
             {isPropsFound ? (
-              <table id="users" className="child-table"><tbody>
+              <table id="users" className="child-table">
+              <thead><tr><th colSpan="2">Update User Details</th></tr></thead>
+              <tbody>
               <tr><td>Id</td><td>{this.props.user.id}</td></tr>
               <tr><td>Name</td><td><input type="text" defaultValue={this.props.user.name} onChange={(e)=>this.handleChange(e, 'name')}/></td></tr>
               <tr><td>Email</td><td><input type="text" defaultValue={this.props.user.email} onChange={(e)=>this.handleChange(e, 'email')}/></td></tr>
@@ -86,7 +94,8 @@ const mapStateToProps = (state, props) => {
 
 const mapActionToProps = {
     onUserFetchById : userFetchById,
-    saveData: editUser
+    saveData: editUser,
+    onResetUserById:resetUserById
 }
 
 

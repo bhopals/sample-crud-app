@@ -3,6 +3,8 @@ export const USER_LIST = "USER_LIST";
 export const USER_EDIT = "USER_EDIT";
 export const USER_CREATE = "USER_CREATE";
 export const USER_DELETE = "USER_DELETE";
+export const RESET_USER_BY_ID = "RESET_USER_BY_ID";
+
 export const USER_FETCH_BY_ID = "USER_FETCH_BY_ID";
 
 export function createUser(newUser) {
@@ -40,6 +42,13 @@ export function listUser(users) {
     return {
         type:USER_LIST,
         payload:{users: users}
+    }
+}
+
+export function resetUserById() {
+    return {
+        type:RESET_USER_BY_ID,
+        payload:{}
     }
 }
 

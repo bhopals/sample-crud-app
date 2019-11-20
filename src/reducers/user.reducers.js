@@ -1,4 +1,4 @@
-import {USER_CREATE, USER_DELETE, USER_EDIT, USER_LIST, USER_FETCH_BY_ID} from '../actions/user.action'
+import {USER_CREATE, USER_DELETE, USER_EDIT, USER_LIST, USER_FETCH_BY_ID, RESET_USER_BY_ID} from '../actions/user.action'
 
 export default function userReducer (state, {type, payload})  {
 
@@ -16,6 +16,11 @@ export default function userReducer (state, {type, payload})  {
         case USER_DELETE : {
             const newUsers = state.users.filter( user => user.id !== payload.id );
             return {...state, users:newUsers};
+        }
+
+        case RESET_USER_BY_ID : {
+            const newUsers = state.users.filter( user => user.id !== payload.id );
+            return {...state, user:{}};
         }
 
         case USER_CREATE : {
