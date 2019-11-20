@@ -35,13 +35,12 @@ class UserComponent extends React.Component {
         <React.Fragment>
           <table id="users"><thead><tr>
             <th>ID</th>
-            <th>NAME</th>
-            <th>PHONE</th>
-            <th>User Name</th>
-            <th>EMAIL</th>
-            <th>WEBSITE</th>
-            <th>ADDRESS</th>
-            <th>COMPANY</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Company Name</th>
             <th>DELETE</th>
             </tr></thead>
             {this.props.users && this.props.users.map((user,index)=>{
@@ -73,5 +72,6 @@ const mapActionToProps = {
   onDeleteUser : deleteUser,
   onCreateUser : createUser
 }
+
 
 export default connect(mapStateToProps, mapActionToProps)(UserComponent);

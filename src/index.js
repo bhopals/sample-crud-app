@@ -21,7 +21,8 @@ const UserComponent = React.lazy(() => import('./components/user.component'));
 
 const initState = {
     users : [],
-    size : 0
+    size : 0,
+    user :{}
 }
 
 const allStoreEnhancements = compose(
@@ -46,7 +47,7 @@ ReactDOM.render(
                     <Route exact path="/" component={UserComponent} />
                 </Suspense>
                 
-                <Route exact path="/userdetail" component={UserDetailComponent} />
+                <Route exact path="/userdetail/:userId" component={UserDetailComponent} />
 
                 <Route exact path="/address" component={AddressComponent} />
                 <Route exact path="/company" component={CompanyComponent} />

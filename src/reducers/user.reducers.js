@@ -1,4 +1,4 @@
-import {USER_CREATE, USER_DELETE, USER_EDIT, USER_LIST} from '../actions/user.action'
+import {USER_CREATE, USER_DELETE, USER_EDIT, USER_LIST, USER_FETCH_BY_ID} from '../actions/user.action'
 
 export default function userReducer (state, {type, payload})  {
 
@@ -9,16 +9,8 @@ export default function userReducer (state, {type, payload})  {
     switch(type) {
 
         case USER_EDIT : {
-            const editUser = state.users.map( user => {
-                if(user.id !== payload.user.id){
-                    user.name = payload.user.name;
-                    user.email = payload.user.email;
-                    user.phone = payload.user.phone;
-                    user.website = payload.user.website;
-                    user.username = payload.user.username;
-                }
-            });
-            return {...state, users:editUser}
+            console.log("...payload.user>>",payload.user);
+            return {...state, users:[...state.users]}
         }
 
         case USER_DELETE : {
@@ -29,6 +21,16 @@ export default function userReducer (state, {type, payload})  {
         case USER_CREATE : {
             console.log("payload.user:",payload.user);
             return {...state, users:[...state.users, payload.user], size:state.size+1};
+        }
+
+        case USER_FETCH_BY_ID : {
+            console.log("payload.id ",payload.id );
+             console.log("payload.id ",payload.id );
+            const getUserById = state.users.filter( user => user.id == payload.id )
+            console.log("payload.id>> ",getUserById);
+
+            console.log("getUserById",getUserById);
+            return {...state, user:getUserById[0]};
         }
 
         case USER_LIST : {

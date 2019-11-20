@@ -3,6 +3,7 @@ export const USER_LIST = "USER_LIST";
 export const USER_EDIT = "USER_EDIT";
 export const USER_CREATE = "USER_CREATE";
 export const USER_DELETE = "USER_DELETE";
+export const USER_FETCH_BY_ID = "USER_FETCH_BY_ID";
 
 export function createUser(newUser) {
     console.log("newUser:", newUser);
@@ -13,7 +14,8 @@ export function createUser(newUser) {
     }
 }
 
-export function editUser(...editUser) {
+export function editUser(editUser) {
+    console.log("...editUser>>",editUser);
     return {
         type:USER_EDIT,
         payload:{user:editUser}
@@ -23,6 +25,13 @@ export function editUser(...editUser) {
 export function deleteUser(id) {
     return {
         type:USER_DELETE,
+        payload:{id:id}
+    }
+}
+
+export function userFetchById(id) {
+    return {
+        type:USER_FETCH_BY_ID,
         payload:{id:id}
     }
 }

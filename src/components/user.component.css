@@ -34,6 +34,12 @@
   font-size: 12px;
 }
 
+#users.child-table {
+  width: 40%;
+  margin: 10px;
+  font-size: 12px;
+}
+
 #users td, #users th {
   border: 1px solid #ddd;
   padding: 8px;
