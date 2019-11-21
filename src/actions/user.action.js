@@ -1,4 +1,6 @@
 import axios from 'axios';
+import data from '../data/data';
+
 export const USER_LIST = "USER_LIST";
 export const USER_EDIT = "USER_EDIT";
 export const USER_CREATE = "USER_CREATE";
@@ -8,8 +10,6 @@ export const RESET_USER_BY_ID = "RESET_USER_BY_ID";
 export const USER_FETCH_BY_ID = "USER_FETCH_BY_ID";
 
 export function createUser(newUser) {
-    console.log("newUser:", newUser);
-    
     return {
         type:USER_CREATE,
         payload:{user:newUser}
@@ -17,7 +17,6 @@ export function createUser(newUser) {
 }
 
 export function editUser(editUser) {
-    console.log("...editUser>>",editUser);
     return {
         type:USER_EDIT,
         payload:{user:editUser}
@@ -53,16 +52,16 @@ export function resetUserById() {
 }
 
 export function apiRequest() {
-    console.log("IN API Request");
     return (dispatch => {
-        axios.get(`https://jsonplaceholder.typicode.com/users`)
+        axios.get(`https://jsonplaceholder.typicode.com/usersss`)
         .then(response => {
             const users = response.data;
             console.log("IN API Request SUCCESS:",users);
             dispatch(listUser(users));
         }).catch(error=>{
             console.log("IN API Request error:",error);
-            console.log("ERROR");
+            console.log("Assigning Fallback data from DATA JSON :");
+            dispatch(listUser(data));
         })
     })
 }

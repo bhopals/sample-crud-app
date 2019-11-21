@@ -12,8 +12,6 @@ class UserDetailComponent extends React.Component {
         this.state = {};
         this.saveData = this.saveData.bind(this);
         this.onResetUserById = this.onResetUserById.bind(this); 
-        console.log("USERL>>",this.user);
-        
     }
 
     componentWillMount() {
@@ -44,15 +42,10 @@ class UserDetailComponent extends React.Component {
         if (this.state.redirect) {
             return <Redirect push to="/" />;
         }
-     
-        if(this.props.user){
-            console.log("this.props.user>><><>",this.props.user);
-        }
 
         const isPropsFound = this.props.user ? true : false;
         return (
             <React.Fragment>
-            <h4 className="left">User Details Component</h4>
             <div className="sub-pages">
             {isPropsFound ? (
               <table id="users" className="child-table">
@@ -76,11 +69,9 @@ class UserDetailComponent extends React.Component {
                 <Redirect push to="/" />
             )}
 
-          </div>                
-            <br/> 
-            <div className="left"> <Link to="/">Go back to Home</Link></div>   
-           
-            <br/>
+          </div>             
+            <br/><br/>   
+            <div> <Link to="/">Go back to Home</Link></div>   
             </React.Fragment>
         );
       }

@@ -1,9 +1,8 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import './user.component.css';
 
 import {deleteUser, createUser} from '../actions/user.action'
 import {connect} from 'react-redux';
-import axios from 'axios';
 
 import CreateNewUserComponent from './user.new.component'
 import UserDetailsComponent from './user.details.component';
