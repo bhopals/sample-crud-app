@@ -2,6 +2,10 @@
   "name": "sample-crud-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.13.0",
+    "node": "10.13.0"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "prop-types": "^15.7.2",
